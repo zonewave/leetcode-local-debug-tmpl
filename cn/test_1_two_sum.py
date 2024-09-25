@@ -44,7 +44,7 @@
 #  进阶：你可以想出一个时间复杂度小于 O(n²) 的算法吗？ 
 # 
 #  Related Topics 数组 哈希表 👍 18877 👎 0
-from all import *
+from precompiled.all import *
 
 from typing import *
 from unittest import TestCase
