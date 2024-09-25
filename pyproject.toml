@@ -1,0 +1,17 @@
+[project]
+name = "zonewave"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "zonewave", email = "ybzhang17@163.com"},
+]
+
+requires-python = ">=3.7"
+readme = "README.md"
+license = {text = "MIT"}
+dependencies = [
+    "precompiled>=0.1.8",
+]
+
+[tool.pdm]
+distribution = false
