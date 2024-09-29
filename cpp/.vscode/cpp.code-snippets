@@ -1,0 +1,50 @@
+{
+	"leetcode local test header": {
+		"scope": "cpp",
+		"prefix": "lctesth",
+		"body": [
+			"",
+			"#include \"common.h\"",
+			"namespace L?{",
+			""
+		],
+		"description": "leetcode local test debug"
+	},
+	"leetcode local test body": {
+		"scope": "cpp",
+		"prefix": "lctestb",
+		"body": [
+			"",
+			"    TEST_CASE(\"test cases\"){",
+			"        vector<LTestCase<",
+			"            ?,//want",
+			"            ? //args",
+			"            >>",
+			"            cases ={",
+			"            {",
+			"                \"case 1\",",
+			"               ?, //want",
+			"               ?, //args",
+			"            },",
+			"            // add cases",
+			"        };",
+			"        for (const auto& case_ : cases)",
+			"        {",
+			"            SUBCASE(case_.name.c_str())",
+			"            {",
+			"                Solution s;",
+			"                auto arg1 = case_.args.get<0>();",
+			"                auto arg2 = case_.args.get<1>();",
+			"                // replace args ",
+			"                vector<int> result = s.?(arg1, arg2);",
+			"                // note: use ListNode::eq when compare ListNode",
+			"                CHECK(result == case_.want);",
+			"            }",
+			"        }",
+			"    }",
+			"}",
+			""
+		],
+		"description": "leetcode local test debug"
+	}
+}

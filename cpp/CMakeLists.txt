@@ -14,7 +14,7 @@ ExternalProject_Add(
         precompiled
         PREFIX ${CMAKE_BINARY_DIR}/precompiled
         GIT_REPOSITORY https://github.com/zonewave/leetcode-precompiled
-        GIT_TAG feature/cpp
+        GIT_TAG master
         TIMEOUT 10
         UPDATE_COMMAND ${GIT_EXECUTABLE} pull
         CONFIGURE_COMMAND ${CMAKE_COMMAND} -DCMAKE_BUILD_TYPE=Debug ${CMAKE_BINARY_DIR}/precompiled/src/precompiled/cpp
