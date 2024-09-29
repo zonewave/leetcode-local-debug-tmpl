@@ -98,31 +98,3 @@ TEST_CASE("test addTwoNumbers")
     }
 }
 
-
-// struct Args {
-//     mutable ? arg1;
-//     mutable ? arg2;
-// };
-
-// struct LTestCase {
-//     string name;
-//     Args args;
-//     ? want;
-// };
-
-// TEST_CASE("test cases") {
-//     Solution s;
-
-//     vector<LTestCase> cases = {
-//         // todo
-//         {"1", {}, },
-//     };
-
-//     for (const auto& case_ : cases) {
-//         SUBCASE(case_.name.c_str()) {
-//             vector<int> result = s.?(case_.args.arg1, case_.args.arg2);
-//              # listNode use 
-//             CHECK(result == case_.want); 
-//         }
-//     }
-// }
