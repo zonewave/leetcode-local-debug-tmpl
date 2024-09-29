@@ -16,9 +16,7 @@
  * };
  */
 
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "precompiled/headers.h"
-#include "doctest.h"
+#include "common.h"
 
 class Solution
 {

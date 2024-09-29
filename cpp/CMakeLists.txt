@@ -28,12 +28,10 @@ ExternalProject_Get_Property(precompiled source_dir binary_dir)
 set(PRECOMPILED_INCLUDE_DIR ${source_dir}/cpp CACHE INTERNAL "Path to include folder for precompiled")
 set(PRECOMPILED_BINARY_DIR ${binary_dir} CACHE INTERNAL "Path to binary folder for precompiled")
 set(PRECOMPILED_LIB_DIR ${binary_dir}/lib CACHE INTERNAL "Path to library for precompiled")
-include_directories(${PRECOMPILED_INCLUDE_DIR})
 
 
 # Common library
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/common)
-add_library(common STATIC common/common.cpp)
+
 
 # Download doctest
 ExternalProject_Add(
@@ -51,7 +49,7 @@ ExternalProject_Add(
 # Get doctest source directory
 ExternalProject_Get_Property(doctest source_dir)
 set(DOCTEST_INCLUDE_DIR ${source_dir}/doctest CACHE INTERNAL "Path to include folder for doctest")
-include_directories(${source_dir}/doctest)
+
 
 # Glob test source files
 file(GLOB_RECURSE TEST_SOURCE_FILES "cn/*.cpp")
@@ -80,12 +78,17 @@ add_custom_target(UpdateSources ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/test_sou
 # Create test executable
 add_executable(tests ${TEST_SOURCE_FILES})
 
+add_dependencies(tests doctest)
+add_dependencies(tests precompiled)
 
 # Include directories for tests
-target_include_directories(tests PRIVATE ${DOCTEST_INCLUDE_DIR})
-target_include_directories(tests PRIVATE ${PRECOMPILED_INCLUDE_DIR})
+include_directories(${DOCTEST_INCLUDE_DIR})
+include_directories(${PRECOMPILED_INCLUDE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/common)
+
 
 # Link libraries
+add_library(common STATIC common/common.cpp)
 target_link_libraries(tests PRIVATE ${PRECOMPILED_LIB_DIR}/libprecompiled.a common)
 
 # Configure testing
