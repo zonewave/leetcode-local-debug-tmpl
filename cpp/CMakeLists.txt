@@ -87,7 +87,6 @@ set(TEST_SOURCE_FILES
     cn/test_1_two_sum.cpp
     cn/test_2_add_two_numbers.cpp
     # add want test cpp
-    cn/test_3_longest-substring-without-repeating-characters.cpp
 )
 # Create test executable
 add_executable(tests ${TEST_SOURCE_FILES})

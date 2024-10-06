@@ -59,7 +59,8 @@ settings里搜索leetcode,在filepath 那块打开setting.json,用下面的配�
       "folder": "cn", //英文站点就用en
       "filename": "test_${id}_${kebab-case-name}.cpp"
     }
-  }
+  },
+  "leetcode.useEndpointTranslation": false,
 }
 ```
 
