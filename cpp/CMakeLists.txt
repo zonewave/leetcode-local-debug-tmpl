@@ -60,29 +60,35 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/common)
 
 
 # Glob test source files
-file(GLOB_RECURSE TEST_SOURCE_FILES "cn/*.cpp")
-string(REPLACE ";" "\\n" TEST_SOURCE_FILES_STRING "${TEST_SOURCE_FILES}")
-# Generate CMake file for test sources
-configure_file(
-        ${CMAKE_CURRENT_SOURCE_DIR}/test_sources.cmake.in
-        ${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake
-        @ONLY
+# file(GLOB_RECURSE TEST_SOURCE_FILES "cn/*.cpp")
+# string(REPLACE ";" "\\n" TEST_SOURCE_FILES_STRING "${TEST_SOURCE_FILES}")
+# # Generate CMake file for test sources
+# configure_file(
+#         ${CMAKE_CURRENT_SOURCE_DIR}/test_sources.cmake.in
+#         ${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake
+#         @ONLY
+# )
+# # Include generated file
+# include(${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake)
+
+# # Custom command to update test sources
+# add_custom_command(
+#         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake
+#         COMMAND ${CMAKE_COMMAND} -E echo "Updating test sources..."
+#         COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake
+#         DEPENDS ${TEST_SOURCE_FILES}
+#         COMMENT "Checking for updated source files..."
+# )
+
+# # Custom target to ensure test sources are up-to-date
+# add_custom_target(UpdateSources ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake)
+#
+set(TEST_SOURCE_FILES
+    cn/test_1_two_sum.cpp
+    cn/test_2_add_two_numbers.cpp
+    # add want test cpp
+    cn/test_3_longest-substring-without-repeating-characters.cpp
 )
-# Include generated file
-include(${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake)
-
-# Custom command to update test sources
-add_custom_command(
-        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake
-        COMMAND ${CMAKE_COMMAND} -E echo "Updating test sources..."
-        COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake
-        DEPENDS ${TEST_SOURCE_FILES}
-        COMMENT "Checking for updated source files..."
-)
-
-# Custom target to ensure test sources are up-to-date
-add_custom_target(UpdateSources ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake)
-
 # Create test executable
 add_executable(tests ${TEST_SOURCE_FILES})
 add_dependencies(tests doctest)

@@ -14,7 +14,18 @@ namespace L1
     public:
         vector<int> twoSum(vector<int> &nums, int target)
         {
-            return {0, 1};
+            auto n = nums.size();
+            for (int i = 0; i < n; ++i)
+            {
+                for (int j = i + 1; j < n; ++j)
+                {
+                    if (nums[i] + nums[j] == target)
+                    {
+                        return {i, j};
+                    }
+                }
+            }
+            return {};
         }
     };
     // @lc code=end

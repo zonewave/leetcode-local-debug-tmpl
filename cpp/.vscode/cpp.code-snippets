@@ -36,7 +36,7 @@
 			"                auto arg1 = case_.args.get<0>();",
 			"                auto arg2 = case_.args.get<1>();",
 			"                // replace args ",
-			"                vector<int> result = s.?(arg1, arg2);",
+			"                auto result = s.?(arg1, arg2);",
 			"                // note: use ListNode::eq when compare ListNode",
 			"                CHECK(result == case_.want);",
 			"            }",
