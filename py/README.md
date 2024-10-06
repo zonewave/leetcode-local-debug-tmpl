@@ -45,7 +45,7 @@ settings里搜索leetcode,在filepath 那块 打开setting.json,用下面的配�
   "leetcode.filePath": {
     "python3": {
       "folder": ".",
-      "filename": "test_${id}_${kebab-case-name}.py"
+      "filename": "test_${id}_${snake_case_name}.py"
     }
   },
   "leetcode.useEndpointTranslation": false,
