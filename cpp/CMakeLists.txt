@@ -49,6 +49,14 @@ ExternalProject_Add(
 # Get doctest source directory
 ExternalProject_Get_Property(doctest source_dir)
 set(DOCTEST_INCLUDE_DIR ${source_dir}/doctest CACHE INTERNAL "Path to include folder for doctest")
+# set common
+add_library(common STATIC common/common.cpp)
+add_dependencies(common doctest)
+
+# Include directories for tests
+include_directories(${DOCTEST_INCLUDE_DIR})
+include_directories(${PRECOMPILED_INCLUDE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/common)
 
 
 # Glob test source files
@@ -77,18 +85,9 @@ add_custom_target(UpdateSources ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/test_sou
 
 # Create test executable
 add_executable(tests ${TEST_SOURCE_FILES})
-
 add_dependencies(tests doctest)
 add_dependencies(tests precompiled)
-
-# Include directories for tests
-include_directories(${DOCTEST_INCLUDE_DIR})
-include_directories(${PRECOMPILED_INCLUDE_DIR})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/common)
-
-
 # Link libraries
-add_library(common STATIC common/common.cpp)
 target_link_libraries(tests PRIVATE ${PRECOMPILED_LIB_DIR}/libprecompiled.a common)
 
 # Configure testing
