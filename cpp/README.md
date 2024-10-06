@@ -1,8 +1,7 @@
-# LeetCode cpp 预编译库
+# LeetCode cpp 
+欢迎使用 LeetCode cpp  模版
 
-欢迎使用 LeetCode cpp local 库！
 
-[github](https://github.com/zonewave/leetcode-local-debug-tmpl)
 
 
 ## 效果显示
