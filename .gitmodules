@@ -1,0 +1,3 @@
+[submodule "cpp/precompiled"]
+	path = cpp/precompiled
+	url = https://github.com/zonewave/leetcode-precompiled.git
