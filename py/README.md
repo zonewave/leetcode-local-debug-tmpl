@@ -8,7 +8,7 @@
 
 ### 1. 安装[leetcode-editor](https://github.com/shuzijun/leetcode-editor)
 
-### 2. [安装工具库](#安装工具库方式)
+### 2. [安装工具库](https://github.com/zonewave/leetcode-precompiled/tree/master/py)
 
 ### 3. 配置模板
 
@@ -52,7 +52,7 @@ settings里搜索leetcode,在filepath 那块 打开setting.json,用下面的配�
 }
 ```
 
-### 3. [安装工具库](#安装工具库方式)
+### 3. [安装工具库](https://github.com/zonewave/leetcode-precompiled/tree/master/py)(可选)
 
 ### 4. 生成代码片段
 
@@ -66,39 +66,5 @@ vscode的测试配置，参考微软的[文档](https://vscode.github.net.cn/doc
 
 ![运行](./img/vscode_run.gif)
 
-## 安装工具库方式
-precompiled
-本库包含
 
-1. leetcode 官方声明的所有数据结构
-2. 本地测试所需的各种工具函数 [api说明](#常用数据结构和方法)
-
-目前稳定版本为0.1.8。
-可以通过以下命令安装该库：
-
-### bash
-
-``` sh
-pip install precompiled  
 ```  
-
-### pdm
-
-```sh  
-pdm add precompiled
-```  
-
-## 使用说明
-
-安装完成后，您可以在 Python 代码中使用以下导入语句来访问leetcode所有数据结构：
-
-python
-
-复制
-
-```python  
-from precompiled.listnode import ListNode
-from precompiled.nestedinteger import NestedInteger
-from precompiled.treenode import TreeNode
-```  
-

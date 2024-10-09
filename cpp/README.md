@@ -8,12 +8,12 @@
 ![cpplc](cpplc.gif)
 
 ## 本地环境配置说明
-可以直接把项目 git clone 下来，然后用vscode切到cpp文件夹，即可使用
-或者把本项目的 cmakelist.txt,test_sources.cmake.in, common文件夹，.vscode里的文件， 复制到自己项目里，也可使用。
+可以直接把项目 git clone 下来，然后用vscode/clion/其他 切到cpp文件夹，即可使用
+或者把本项目的 cmakelist.txt,test_sources.cmake.in, common文件夹，.vscode里的文件（如果使用到vscode）话， 复制到自己项目里，也可使用。
 
-主要思路是把每个solution代码纳入到测试体系.
-由于cpp标准库里没啥好用的测试库，所以使用doctest了来进行测试运行
-本项目需要包管理工具 ，这里使用cmake(后续可能会给xmake,hunter,conan之类的)，vscode,clion 都可以通用
+主要思路是把每个需要solution代码纳入到测试体系.
+由于cpp标准库里没啥好用的测试库，所以使用doctest（这是个超轻量的，并且很流行的库）了来进行测试运行。
+本项目需要包管理工具 ，这里使用cmake(后续可能会给xmake,hunter,conan之类的)，vscode,clion 都支持cmake的解析。
 
 目录结构说明
 ```
@@ -28,10 +28,27 @@ project/
       ...
     common/    #通用目录
     CMakeLists.txt  #cmake 文件
+
+```
+导入项目配置后，第一次先build，保证build成功。
+
+编写完测试
+同时cmakelists.txt文件里这块添加cpp文件路径。
+```cmake
+set(TEST_SOURCE_FILES
+    #cn/test_1_two_sum.cpp
+    #cn/test_2_add_two_numbers.cpp
+
+    cn/???.cpp # add want test cpp
+)
 ```
 
+### 使用建议
+一般情况，可能不需要单步调试就能解决，所以像上面那样只把需要测试的cpp文件加入到build过程中，
+
+
 ## vscode 本地调试
-vscode cpp配置 对新手来说，会比较麻烦，但请按下面一步步走
+vscode cpp配置 对新手来说，会比较麻烦，但请按下面一步步走.
 ### 1. 安装官方扩展Leetcode 并配置 
 
 参考官方的说明，配置好账号密码
@@ -63,24 +80,29 @@ settings里搜索leetcode,在filepath 那块打开setting.json,用下面的配�
 }
 ```
 
-### 4. [安装工具库](#安装工具库方式)[可选]
+### 4. [安装工具库][https://github.com/zonewave/leetcode-precompiled/blob/master/cpp]
 写链表，树，嵌套数组时所需的工具库，也可以不安装，自己在common文件里用你自己写的。
 
-### 5. 生成代码片段
+### 6. 生成代码片段
 
 点击lc界面里任一题目生成文件后，
 在    // @lc code=start 上头空白处 ，敲击lctesth，然后使用tab自动补全，导入头文件和声明命令空间，这里命令空间写题号即可。
 在// @lc code=end 下面空白处，敲击lctestb，然后使用tab自动补全，接着补充参数，填写用例。
+然后在cmakelists.txt
+**注意：一些简单题不写测试的话，步骤5,6可以跳过** **，直接用官方leetcode模板写就行了。**
+### 7. 配置测试
 
-### 6. 配置测试
 
 编写完测试用例后，需要通过命令面板，执行命令 cmake: build，构建测试。
-如果是新增的cpp文件，需要执行 cmake:clean rebuild.
+如果是新增的cpp文件，需要执行 cmake:clean rebuild. 同时cmakelists.txt文件里这块添加cpp文件路径。
+```cmake
+set(TEST_SOURCE_FILES
+    cn/test_1_two_sum.cpp
+    cn/test_2_add_two_numbers.cpp
+   
+    cn/???.cpp # add want test cpp
+)
+```
 
-构建之后，界面会出现三角绿色按钮，设置断点，右键即可运行调试。也可以在侧边栏上，
-
-
-
-
-
+构建之后，界面会出现三角绿色按钮，设置断点，右键即可运行调试。也可以在侧边栏cmake点击debug调试。
 
