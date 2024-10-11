@@ -2,7 +2,7 @@
     "python.testing.unittestArgs": [
         "-v",
         "-s",
-        ".",
+        "./cn", // 也可以用en
         "-p",
         "test*.py"
     ],
