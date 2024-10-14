@@ -33,7 +33,10 @@
 ## 效果
 
 ### [Python](./py/README_CN.md)
+![vscodecpp](./cpp/img/vscodecpp.png)
 
+### gif动图
+看不到，可以点击[这里](https://pic.imgdb.cn/item/67078defd29ded1a8c98f822.gif)
 ![debug](https://pic.imgdb.cn/item/67078defd29ded1a8c98f822.gif)
 
 

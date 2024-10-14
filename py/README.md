@@ -24,8 +24,9 @@
 
 ## pycharm 本地调试
 点击题目，配置好用例，然后进行运行或者调试
+### 动图演示
 ![init](https://pic.imgdb.cn/item/67078defd29ded1a8c98f822.gif)
-
+看不到gif，请看[这里](https://pic.imgdb.cn/item/67078defd29ded1a8c98f822.gif)
 
 
 ## vscode 本地调试步骤
@@ -64,6 +65,9 @@ settings里搜索leetcode,在filepath 那块 打开setting.json,用下面的配�
 vscode的测试配置，参考微软的[文档](https://vscode.github.net.cn/docs/python/testing#_configure-tests)
 写好答案后，点击test界面，运行即可
 
+#### 动图演示
+
+看不到gif，请看[这里](https://pic.imgdb.cn/item/67092251d29ded1a8cd5a53a.gif)
 ![运行](https://pic.imgdb.cn/item/67092251d29ded1a8cd5a53a.gif)
 
 
