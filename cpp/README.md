@@ -5,6 +5,7 @@
 
 
 ## 效果显示
+看不到gif，请看[这里](https://pic.imgdb.cn/item/670ccfcdd29ded1a8cd9f738.gif)
 ![vscode](https://pic.imgdb.cn/item/670ccfcdd29ded1a8cd9f738.gif)
 
 ## 本地环境配置说明
@@ -114,12 +115,13 @@ settings里搜索leetcode,在filepath 那块打开setting.json,用下面的配�
 ## clion 
 clion 配置比较简单，只要把 leetcode插件安装好.
 设置(在clion的settings.Tool.Leetcode Plugin或者侧边栏里leetcode tab里有个设置按钮)
-leetcode插件里的文件夹路径，接着复制模板里对应的code filename 和 code template就好了。
+leetcode插件里的文件夹路径，接着复制[模板](./tmpl/jetbrains_tmpl.md)里对应的code filename 和 code template就好了。
 
 不需要调试的时候，把生成的test相关代码注释掉即可。
 需要调试的时候，cmakelists.txt文件在[上文](#集成到测试构建)那提到的添加新生成的cpp文件路径。然后填写测试用例后，界面就有绿色按钮出现，这就可以进行运行和调试了。
 
-动图演示
+### 动图演示
+看不到gif，请看[这里](https://pic.imgdb.cn/item/670ccee5d29ded1a8cd8d5be.gif)
 ![clion](https://pic.imgdb.cn/item/670ccee5d29ded1a8cd8d5be.gif)
 
 
