@@ -46,51 +46,39 @@
 #  Related Topics 数组 哈希表 👍 18877 👎 0
 from precompiled.all import *
 
-from typing import *
-from unittest import TestCase
-from dataclasses import dataclass
-@dataclass
-class Args:
-  nums: list[int]
-  target: int
-
-
-@dataclass
-class LTestCase:
-  name: str
-  args: Args
-  want: list[int]
-
 
 class TestSolution(TestCase):
-  def test_two_sum(self):
+    def test_two_sum(self):
+        cases: list[LTestCase] = [
+            LTestCase("1", [0, 1], [2, 7, 11, 15], 9),
+            LTestCase("2", [1, 2], [3, 2, 4], 6),
+            LTestCase("3", [0, 1], [3, 3], 6)
+        ]
+        s = Solution()
+        for case in cases:
+            with self.subTest(case=case.name):
+                self.assertEqual(s.twoSum(case.args.get(0), case.args.get(1)),
+                                 case.want)
 
-    cases: list[LTestCase] = [
-      LTestCase("1", Args([2, 7, 11, 15], 9), [0, 1]),
-      LTestCase("2", Args([3, 2, 4], 6), [1,2]),
-      LTestCase("3", Args([3, 3], 6), [0, 1])
-    ]
-    s = Solution()
-    for case in cases:
-      with self.subTest(case=case.name):
-        self.assertEqual(s.twoSum(**case.args.__dict__), case.want)
 
-
+# @lc app=leetcode.cn id=1 lang=python3
 # leetcode submit region begin(Prohibit modification and deletion)
+# @lc code=start
 class Solution(object):
-  def twoSum(self, nums, target):
-    """
-    :type nums: List[int]
-    :type target: int
-    :rtype: List[int]
-    """
-    index_map = {}
-    for index, num in enumerate(nums):
-      prior = index_map.get(target - num)
-      if prior is not None:
-        return [prior, index]
-      index_map[num] = index
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        index_map = {}
+        for index, num in enumerate(nums):
+            prior = index_map.get(target - num)
+            if prior is not None:
+                return [prior, index]
+            index_map[num] = index
 
-    return None
+        return None
 
+# @lc code=end
 # leetcode submit region end(Prohibit modification and deletion)

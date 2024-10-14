@@ -21,7 +21,7 @@ namespace L2
     class Solution
     {
     public:
-        ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
+        ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
         {
             ListNode *head = nullptr, *tail = nullptr;
             int carry = 0;
@@ -63,8 +63,8 @@ namespace L2
     {
         Solution s;
         vector<LTestCase<
-            ListNode *,            // want
-            ListNode *, ListNode * // arg
+                ListNode*, // want
+                ListNode*, ListNode* // arg
             >>
             cases = {
                 {
@@ -76,7 +76,7 @@ namespace L2
                 // add other
             };
 
-        for (const auto &case_ : cases)
+        for (const auto& case_ : cases)
         {
             SUBCASE(case_.name.c_str())
             {

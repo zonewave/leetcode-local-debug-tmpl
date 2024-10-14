@@ -5,14 +5,14 @@
  */
 
 #include "common.h"
+
 namespace L1
 {
-
     // @lc code=start
     class Solution
     {
     public:
-        vector<int> twoSum(vector<int> &nums, int target)
+        vector<int> twoSum(vector<int>& nums, int target)
         {
             auto n = nums.size();
             for (int i = 0; i < n; ++i)
@@ -28,13 +28,14 @@ namespace L1
             return {};
         }
     };
+
     // @lc code=end
 
     TEST_CASE("test cases")
     {
         vector<LTestCase<
-            vector<int>,     // want
-            vector<int>, int // args
+                vector<int>, // want
+                vector<int>, int // args
             >>
             cases = {
                 {
@@ -45,7 +46,7 @@ namespace L1
                 },
                 // add cases
             };
-        for (const auto &case_ : cases)
+        for (const auto& case_ : cases)
         {
             SUBCASE(case_.name.c_str())
             {

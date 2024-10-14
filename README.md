@@ -16,7 +16,7 @@
 6. 提供基础的框架和工具库（参考这个[项目](https://github.com/zonewave/leetcode-precompiled)），也可以自己替换模块。同时编程新手可以通过此项目学习基本的  “单元测试”，“包管理”，“代码片段”
 
 ## 适用范围：
-	一般情况下，直接写solution 代码，然后通过官方插件，点击直接提交代码到web就可以了。当提交n遍，没通过时，可以利用此模版，复制测试用例到本地，进行调试查看即可方便定位到问题所在。
+一般情况下，直接写solution 代码，然后通过官方插件，点击直接提交代码到web就可以了。当提交n遍，没通过时，可以利用此模版，复制测试用例到本地，进行调试查看即可方便定位到问题所在。
 
 
 
@@ -34,7 +34,7 @@
 
 ### [Python](./py/README_CN.md)
 
-![debug](./py/img/debug.jpg)
+![debug](https://pic.imgdb.cn/item/67078defd29ded1a8c98f822.gif)
 
 
 
@@ -44,7 +44,7 @@
 
 - [x] [Python](./py/README.md)
 
-- [x] [Cpp]((./cpp/README.md)
+- [x] [Cpp](./cpp/README.md)
 - [ ] Golang
 - [ ] Java
 - [ ] Rust

@@ -46,7 +46,7 @@
 # 
 #  Related Topics Array Hash Table 👍 58036 👎 2055
 
-from common_import import  *
+from precompiled.all import  *
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution(object):
     def twoSum(self, nums, target):
