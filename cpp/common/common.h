@@ -5,28 +5,33 @@
 #include "precompiled/headers.h"
 using namespace std;
 
+template <typename... Args>
+struct ArgsHolder
+{
+    std::tuple<Args...> args; //
 
+    ArgsHolder(Args... args) : args(make_tuple(std::forward<Args>(args)...))
+    {
+    }
 
-    template <typename... Args>
-    struct ArgsHolder {
-        std::tuple<Args...> args; //
+    template <size_t Index>
+    auto get() const
+    {
+        return std::get<Index>(args);
+    }
+};
 
-        ArgsHolder(Args... args) : args(make_tuple(std::forward<Args>(args)...)) {}
+template <typename R, typename... Args>
+struct LTestCase
+{
+    std::string name;
+    ArgsHolder<Args...> args;
+    R want;
 
-        template <size_t Index>
-        auto get() const {
-            return std::get<Index>(args);
-        }
-    };
+    LTestCase(std::string name, R want, Args... args)
+        : name(std::move(name)), args(args...), want(want)
+    {
+    }
+};
 
-    template <typename R, typename... Args>
-    struct LTestCase {
-        std::string name;
-        ArgsHolder<Args...> args;
-        R want;
-
-        LTestCase(std::string name,  R want,Args... args)
-            : name(std::move(name)), args(args...), want(want) {}
-    };
-
-#endif 
+#endif
