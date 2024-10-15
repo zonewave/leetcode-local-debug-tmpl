@@ -16,9 +16,9 @@ ExternalProject_Add(
         GIT_REPOSITORY https://github.com/zonewave/leetcode-precompiled
         GIT_TAG master
         TIMEOUT 10
-        UPDATE_COMMAND ${GIT_EXECUTABLE} pull
+#        UPDATE_COMMAND ${GIT_EXECUTABLE} pull
         CONFIGURE_COMMAND ${CMAKE_COMMAND} -DCMAKE_BUILD_TYPE=Debug ${CMAKE_BINARY_DIR}/precompiled/src/precompiled/cpp
-        BUILD_COMMAND ${CMAKE_COMMAND} --build .
+        BUILD_COMMAND ${CMAKE_COMMAND} --build . -- -j26
         INSTALL_COMMAND ""
         LOG_DOWNLOAD ON
 )
@@ -38,8 +38,8 @@ ExternalProject_Add(
         doctest
         PREFIX ${CMAKE_BINARY_DIR}/doctest
         GIT_REPOSITORY https://github.com/doctest/doctest.git
+        GIT_TAG v2.4.11
         TIMEOUT 10
-        UPDATE_COMMAND ${GIT_EXECUTABLE} pull
         CONFIGURE_COMMAND ""
         BUILD_COMMAND ""
         INSTALL_COMMAND ""
@@ -51,7 +51,7 @@ ExternalProject_Get_Property(doctest source_dir)
 set(DOCTEST_INCLUDE_DIR ${source_dir}/doctest CACHE INTERNAL "Path to include folder for doctest")
 # set common
 add_library(common STATIC common/common.cpp)
-add_dependencies(common doctest)
+add_dependencies(common precompiled)
 
 # Include directories for tests
 include_directories(${DOCTEST_INCLUDE_DIR})
