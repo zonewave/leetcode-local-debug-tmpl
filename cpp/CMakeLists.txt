@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.14)
 project(leetcode)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_MESSAGE_LOG_LEVEL DEBUG)
 
 # Download precompiled packages
@@ -29,10 +31,6 @@ set(PRECOMPILED_INCLUDE_DIR ${source_dir}/cpp CACHE INTERNAL "Path to include fo
 set(PRECOMPILED_BINARY_DIR ${binary_dir} CACHE INTERNAL "Path to binary folder for precompiled")
 set(PRECOMPILED_LIB_DIR ${binary_dir}/lib CACHE INTERNAL "Path to library for precompiled")
 
-
-# Common library
-
-
 # Download doctest
 ExternalProject_Add(
         doctest
@@ -54,35 +52,12 @@ add_library(common STATIC common/common.cpp)
 add_dependencies(common precompiled)
 
 # Include directories for tests
-include_directories(${DOCTEST_INCLUDE_DIR})
-include_directories(${PRECOMPILED_INCLUDE_DIR})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/common)
+include_directories(
+        ${DOCTEST_INCLUDE_DIR} 
+        ${PRECOMPILED_INCLUDE_DIR} 
+        ${CMAKE_CURRENT_SOURCE_DIR}/common
+)
 
-
-# Glob test source files
-# file(GLOB_RECURSE TEST_SOURCE_FILES "cn/*.cpp")
-# string(REPLACE ";" "\\n" TEST_SOURCE_FILES_STRING "${TEST_SOURCE_FILES}")
-# # Generate CMake file for test sources
-# configure_file(
-#         ${CMAKE_CURRENT_SOURCE_DIR}/test_sources.cmake.in
-#         ${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake
-#         @ONLY
-# )
-# # Include generated file
-# include(${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake)
-
-# # Custom command to update test sources
-# add_custom_command(
-#         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake
-#         COMMAND ${CMAKE_COMMAND} -E echo "Updating test sources..."
-#         COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake
-#         DEPENDS ${TEST_SOURCE_FILES}
-#         COMMENT "Checking for updated source files..."
-# )
-
-# # Custom target to ensure test sources are up-to-date
-# add_custom_target(UpdateSources ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/test_sources.cmake)
-#
 set(TEST_SOURCE_FILES
     cn/test_1_two_sum.cpp
     cn/test_2_add_two_numbers.cpp
@@ -90,8 +65,8 @@ set(TEST_SOURCE_FILES
 )
 # Create test executable
 add_executable(tests ${TEST_SOURCE_FILES})
-add_dependencies(tests doctest)
-add_dependencies(tests precompiled)
+add_dependencies(tests doctest common)
+
 # Link libraries
 target_link_libraries(tests PRIVATE ${PRECOMPILED_LIB_DIR}/libprecompiled.a common)
 
